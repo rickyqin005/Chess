@@ -5,7 +5,6 @@ const possibleMoveColor = 'rgba(255,255,150,0.7)';
 const kingInCheckColor = 'rgba(255,26,26,0.6)';
 const greySquareColor = 'rgb(150,150,150)';
 var boardOrientation = 1;
-//var isMouseDown = false;
 var kingInCheck,totalMoves;
 var selection,gameHistory;
 var board = new Array(8);
@@ -484,6 +483,7 @@ function undoMove() {
 	var div = document.getElementById('notation');
 	if(totalMoves%2 == 1) div.getElementsByTagName('li')[Math.floor(totalMoves/2)].remove();
 	else div.getElementsByTagName('li')[totalMoves/2-1].getElementsByTagName('p')[1].remove();
+	if(document.getElementById('div-result') !== null) document.getElementById('div-result').remove();
 	var c = whiteOrBlack(totalMoves%2*-2+1,true);
 	document.getElementById('whose-turn').innerHTML = c+' to move';
 	totalMoves--;
